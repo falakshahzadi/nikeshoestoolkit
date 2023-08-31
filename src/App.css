@@ -1,0 +1,13 @@
+
+
+
+body.dark-theme {
+
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+body.dark-theme .toggle-button {
+  background-color: #fff;
+  color: #1a1a1a;
+}

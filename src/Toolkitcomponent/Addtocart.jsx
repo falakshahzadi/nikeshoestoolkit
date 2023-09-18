@@ -19,6 +19,7 @@ import {
   incrementQuantity,
   removeFromCart,
 } from "./actionsfile";
+import { Link } from "react-router-dom";
 
 const Addtocart = () => {
   // --------------states------------
@@ -51,7 +52,7 @@ const Addtocart = () => {
         marginBottom={"25px"}
         marginTop={"10px"}
       >
-        My Cart
+        Nike Cart
       </Typography>
       <Container sx={{ display: "flex", gap: "20px", flexDirection: "column" }}>
         {cart.map((item, i) => (
@@ -105,6 +106,15 @@ const Addtocart = () => {
         >
           Total Price: ${totalPrice}
         </Typography>
+        {/* <Link to='/login' style={{textDecoration:'none'}}><Button  sx={{
+                  background: "#A2C1F0",
+                  color: "black",
+                  width: "30%",
+                  py: 1,
+                  px: 2,
+                  width:'fit-content',
+                  borderRadius: "6px",
+                }} variant="contained">Checkout</Button></Link> */}
       </Container>
     </Box>
   );

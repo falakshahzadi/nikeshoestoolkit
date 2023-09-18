@@ -1,8 +1,16 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, Card, Container, Grid, Switch, Typography } from "@mui/material";
-import { addToCart, setThemeColor } from "./actionsfile";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Switch,
+  Typography,
+} from "@mui/material";
+import { addToCart } from "./actionsfile";
 
 const ProductDetail = () => {
   // -------------------states-----------------
@@ -10,39 +18,34 @@ const ProductDetail = () => {
   const menData = useSelector((state) => state.data.men);
   const womenData = useSelector((state) => state.data.women);
   const kidsData = useSelector((state) => state.data.kids);
-  const themeColor = useSelector((state) => state.data.themeColor);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
 
   //   -------------handle---------------------
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     navigate(`/cart`);
   };
-  const handleThemeToggle = () => {
-    const newThemeColor = themeColor === "light" ? "dark" : "light";
-    dispatch(setThemeColor(newThemeColor));
-  };
+
   let product;
   const findProductByKey = (data, key) => {
-   if(data[key]){
-    product =data[key]
-   }
-   return product;
-  }
+    if (data[key]) {
+      product = data[key];
+    }
+    return product;
+  };
   product =
-  findProductByKey(menData, key) ||
-  findProductByKey(womenData, key) ||
-  findProductByKey(kidsData, key);
-  
-if (!product) {
-  return (
-    <Typography variant="h6">
-      Product not found. Please check the URL.
-    </Typography>
-  );
-}
+    findProductByKey(menData, key) ||
+    findProductByKey(womenData, key) ||
+    findProductByKey(kidsData, key);
+
+  if (!product) {
+    return (
+      <Typography variant="h6">
+        Product not found. Please check the URL.
+      </Typography>
+    );
+  }
 
   return (
     <Box>
@@ -65,7 +68,6 @@ if (!product) {
         >
           Product Detail
         </Typography>
-        <Switch onClick={handleThemeToggle}>Toggle Theme</Switch>
         <Card sx={{ width: 900 }}>
           <Grid container justifyContent={"center"} spacing={3}>
             <Grid item lg={6}>
@@ -120,4 +122,4 @@ if (!product) {
   );
 };
 
-export default  ProductDetail
+export default ProductDetail;
